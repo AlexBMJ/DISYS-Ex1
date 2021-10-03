@@ -381,40 +381,14 @@ paths:
           description: "Invalid input"
         "409":
           description: "Already exists"
-    put:
-      tags:
-      - "course"
-      summary: "Update a course"
-      description: ""
-      operationId: "updateCourse"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "Course to be updated"
-        required: true
-        schema:
-          $ref: "#/definitions/Course"
-        x-exportParamName: "Body"
-      responses:
-        "200":
-          description: "Success"
-        "400":
-          description: "Invalid Course ID"
-        "404":
-          description: "Student not found"
-        "405":
-          description: "Validation exception"
-  /course/overview:
+
+  /courses:
     get:
       tags:
       - "course"
       summary: "Returns list of courses available"
       description: "Returns a map of status codes to quantities"
-      operationId: "getInventory"
+      operationId: "getOverview"
       produces:
       - "application/json"
       parameters: []
@@ -472,6 +446,40 @@ paths:
           description: "Invalid ID supplied"
         "404":
           description: "Course not found"
+    put:
+      tags:
+      - "course"
+      summary: "Update a course"
+      description: ""
+      operationId: "updateCourse"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Course to be updated"
+        required: true
+        schema:
+          $ref: "#/definitions/Course"
+        x-exportParamName: "Body"
+      - name: "courseId"
+        in: "path"
+        description: "Id of course to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "CourseId"
+      responses:
+        "200":
+          description: "Success"
+        "400":
+          description: "Invalid Course ID"
+        "404":
+          description: "Course not found"
+        "405":
+          description: "Validation exception"
 definitions:
   Course:
     type: "object"

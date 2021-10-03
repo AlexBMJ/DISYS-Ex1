@@ -44,7 +44,7 @@ func NewRouter() *mux.Router {
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello World!")
+	fmt.Fprintf(w, "ITU Student, Teacher and Course Management")
 }
 
 var routes = Routes{
@@ -77,17 +77,17 @@ var routes = Routes{
 	},
 
 	Route{
-		"GetInventory",
-		strings.ToUpper("Get"),
-		"/course/overview",
-		GetInventory,
+		"UpdateCourse",
+		strings.ToUpper("Put"),
+		"/course/{courseId}",
+		UpdateCourse,
 	},
 
 	Route{
-		"UpdateCourse",
-		strings.ToUpper("Put"),
-		"/course",
-		UpdateCourse,
+		"GetOverview",
+		strings.ToUpper("Get"),
+		"/courses",
+		GetOverview,
 	},
 
 	Route{

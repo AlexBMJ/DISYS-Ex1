@@ -18,15 +18,15 @@ import (
 	// once you place this file into your project.
 	// For example,
 	//
-	sw "github.com/AlexBMJ/DISYS-Ex1/go"
+	// sw "github.com/AlexBMJ/DISYS-Ex1/go"
 	//
-	//sw "./go"
+	sw "./go"
 )
 
 func main() {
 	log.Printf("Server started")
-
 	router := sw.NewRouter()
+	sw.CreateDB()
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
