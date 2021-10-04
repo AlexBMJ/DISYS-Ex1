@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option go_package = "example.com/go-apiservice-grpc;go_apiservice_grpc";
+
+package apiservice;
+
+import "google/protobuf/empty.proto";
+
+service RouteCourse {
+
+    rpc AddCourse (NewCourse) returns (Course) {}
+
+    rpc DeleteCourse (NewCourse) returns (Course) {}
+
+    rpc GetCourseById (GetCourseByIdRequest) returns (Course) {}
+
+    rpc GetOverview (google.protobuf.Empty) returns (stream Course) {}
+
+    rpc UpdateCourse (UpdateCourseRequest) returns (Course) {}
+
+}
+
+message Course {
+    int64 Id = 1;
+    string Name = 2;
+}
+
+message NewCourse {
+    string Name = 2;
+}
+
+message GetCourseByIdRequest {
+    int64 Id = 1;
+}
+
+message UpdateCourseRequest {
+    int64 Id = 1;
+    Course course = 2;
+}
