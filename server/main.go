@@ -20,7 +20,7 @@ import (
 	//
 	// sw "github.com/AlexBMJ/DISYS-Ex1/go"
 	//
-	sw "./go"
+	sw "example.com/restapi/go"
 )
 
 func main() {
